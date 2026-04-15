@@ -16,6 +16,8 @@
 #include "esp_log.h"
 #include "nvs_flash.h"
 
+#include "httpd.c"
+
 #include "lwip/err.h"
 #include "lwip/sys.h"
 
@@ -184,4 +186,6 @@ void app_main(void)
 
     ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
     wifi_init_sta();
+
+    start_webserver();
 }
