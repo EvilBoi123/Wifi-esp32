@@ -8,6 +8,8 @@
 #include "esp_log.h"
 #include "nvs_flash.h"
 
+#include "mdns.h"
+
 #include "lwip/err.h"
 #include "lwip/sys.h"
 
@@ -74,4 +76,11 @@ void wifi_init_sta(void){
 	else 
 		ESP_LOGI(TAG, "Unexpected problem..");
 
+	// Mdns
+	esp_err_t err = mdns_init(); 
+	if (err) {
+		printf("MDNS Init failed: %d\n", err);
+	}
+	mdns_hostname_set("esp32");
+	mdns_instance_name_set("Alif's Esp32");
 }
