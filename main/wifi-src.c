@@ -83,4 +83,5 @@ void wifi_init_sta(void){
 	}
 	mdns_hostname_set("esp32");
 	mdns_instance_name_set("Alif's Esp32");
+	mdns_service_add(NULL, "_http", "_tcp", 80, NULL, 0);
 }
